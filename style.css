@@ -1,0 +1,477 @@
+:root {
+  --color-brand--1: #faf4b7;
+  --color-brand--2: #cdf0ea;
+
+  --color-dark--1: #041c32;
+  --color-dark--2: #04293a;
+  --color-light--1: #c6dce4;
+  --color-light--2: #daeaf1;
+  --color-light--3: #d6dee0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Manrope', sans-serif;
+  color: var(--color-light--1);
+  font-weight: 400;
+  line-height: 1.6;
+  height: 100vh;
+  overscroll-behavior-y: none;
+
+  background-color: #fff;
+
+  display: flex;
+}
+
+/* GENERAL */
+/* a:link,
+a:visited {
+  color: var(--color-brand--1);
+} */
+
+/* NAV */
+nav {
+  display: none;
+}
+
+/* SIDEBAR */
+.sidebar {
+  flex-basis: 55rem;
+  background-color: var(--color-dark--1);
+  padding: 3rem 5rem 4rem 5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  height: 5.2rem;
+  align-self: start;
+  margin-bottom: 2rem;
+}
+
+.workouts {
+  list-style: none;
+  height: 77vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.workouts::-webkit-scrollbar {
+  width: 0;
+}
+
+.workout {
+  background-color: var(--color-dark--2);
+  border-radius: 5px;
+  padding: 1.5rem 2.25rem;
+  margin-bottom: 1.75rem;
+  cursor: pointer;
+  position: relative;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 0.75rem 1.5rem;
+}
+.workout--running {
+  border-left: 5px solid var(--color-brand--2);
+}
+.workout--cycling {
+  border-left: 5px solid var(--color-brand--1);
+}
+
+.workout__title__container {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+}
+
+.workout__title {
+  font-size: 1.7rem;
+  font-weight: 600;
+}
+
+.workout__actions {
+  font-size: 1.7rem;
+}
+
+.workout__details {
+  display: flex;
+  align-items: baseline;
+}
+
+.workout__icon {
+  font-size: 1.8rem;
+  margin-right: 0.2rem;
+  height: 0.28rem;
+}
+
+.workout__value {
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+}
+
+.workout__unit {
+  font-size: 1.1rem;
+  color: var(--color-light--1);
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+.form {
+  background-color: var(--color-dark--2);
+  border-radius: 5px;
+  padding: 3rem 4rem;
+  margin-bottom: 1.75rem;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  gap: 0.5rem 1.5rem;
+
+  /* Match height and activity boxes */
+  height: 14.5rem;
+  transition: all 0.5s, transform 1ms;
+}
+
+.form.hidden {
+  transform: translateY(-30rem);
+  height: 0;
+  padding: 0 2.25rem;
+  margin-bottom: 0;
+  opacity: 0;
+}
+
+.form__row {
+  display: flex;
+  align-items: center;
+}
+
+.form__row--hidden {
+  display: none;
+}
+
+.form__label {
+  flex: 0 0 50%;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.form__input {
+  width: 100%;
+  padding: 0.3rem 1.1rem;
+  font-family: inherit;
+  font-size: 1.4rem;
+  border: none;
+  border-radius: 3px;
+  background-color: var(--color-light--3);
+  transition: all 0.2s;
+}
+
+.form__input:focus {
+  outline: none;
+  background-color: #fff;
+}
+
+.form__btn {
+  grid-column: 1/3;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  background-color: #04293a;
+  border: 1px solid var(--color-light--2);
+  border-radius: 0.625rem;
+  color: var(--color-light--1);
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin: 0.75rem;
+  cursor: pointer;
+}
+
+.copyright {
+  margin-top: auto;
+  font-size: 1.3rem;
+  text-align: center;
+  color: var(--color-light--1);
+}
+
+.twitter-link:link,
+.twitter-link:visited {
+  color: var(--color-light--1);
+  transition: all 0.2s;
+}
+
+.twitter-link:hover,
+.twitter-link:active {
+  color: var(--color-light--2);
+}
+
+/* MAP */
+#map {
+  flex: 1;
+  height: 100%;
+  background-color: var(--color-light--1);
+}
+
+/* Popup width is defined in JS using options */
+.leaflet-popup .leaflet-popup-content-wrapper {
+  background-color: var(--color-dark--1);
+  color: var(--color-light--2);
+  border-radius: 5px;
+  padding-right: 0.6rem;
+}
+
+.leaflet-popup .leaflet-popup-content {
+  font-size: 1.5rem;
+}
+
+.leaflet-popup .leaflet-popup-tip {
+  background-color: var(--color-dark--1);
+}
+
+.running-popup .leaflet-popup-content-wrapper {
+  border-left: 5px solid var(--color-brand--2);
+}
+.cycling-popup .leaflet-popup-content-wrapper {
+  border-left: 5px solid var(--color-brand--1);
+}
+
+/* Workout overlay */
+
+.workout__overlay {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: lightcoral;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.workout__overlay .confirm__delete {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-dark--1);
+}
+
+.workout__overlay .confirm__delete__btns {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-light--2);
+  background-color: var(--color-dark--2);
+  border: none;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.workout__overlay--inactive {
+  display: none;
+}
+
+.edit__workout {
+  margin: 0.5rem;
+}
+
+.edit__workout:hover,
+.edit__save {
+  color: green;
+}
+
+.delete__workout {
+  margin: 0.5rem;
+}
+
+.delete__workout:hover,
+.edit__cancel {
+  color: red;
+}
+
+.cancel__form {
+  padding: 1.5rem;
+  justify-self: end;
+  position: absolute;
+  border: none;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  color: var(--color-light--2);
+  font-size: 1.4rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.edit__input {
+  width: 30px;
+}
+
+.edit__hidden {
+  display: none;
+}
+
+.edit__save,
+.edit__cancel {
+  font-size: 1.7rem;
+  margin: 0.5rem;
+}
+
+.sidebar__nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.clear__all__btn {
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  background-color: #04293a;
+  border: 1px solid var(--color-light--2);
+  border-radius: 0.625rem;
+  color: var(--color-light--1);
+  font-weight: 600;
+  font-size: 1.5rem;
+  height: 35px;
+  cursor: pointer;
+}
+@media screen and (max-width: 1200px) {
+  .sidebar {
+    flex-basis: 30rem;
+    /* background-color: var(--color-dark--1); */
+    padding: 1.5rem 2.5rem 2rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .logo {
+    height: 4.8rem;
+  }
+  .workout {
+    padding: 1rem 1rem;
+    max-width: 300px;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem 1.5rem;
+  }
+
+  .form {
+    padding: 1.5rem 2rem;
+    margin-bottom: 1.75rem;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    /* Match height and activity boxes */
+    height: 19rem;
+  }
+
+  .form__btn {
+    grid-column: 1;
+  }
+
+  .form__row {
+    display: flex;
+    align-items: center;
+  }
+
+  .form__row--hidden {
+    display: none;
+  }
+
+  .form__label {
+    flex: 0 0 35%;
+  }
+
+  select.form__input:nth-of-type(1) {
+    width: 55%;
+  }
+
+  .workout__overlay .confirm__delete {
+    text-align: center;
+  }
+
+  .edit__media__1200 {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .edit__media__1200 span {
+    margin: 0;
+  }
+
+  .edit__media__1200 span:nth-last-of-type(1) i {
+    display: none;
+    text-align: end;
+  }
+  .sidebar__nav {
+    margin-bottom: 2rem;
+    height: 10vh;
+  }
+
+  .logo {
+    height: 4.8rem;
+    margin-bottom: 0;
+    align-self: center;
+  }
+
+  .clear__all__btn {
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #map {
+    flex: 1;
+    height: 80vh;
+  }
+  nav {
+    display: flex;
+    height: 8vh;
+    background-color: var(--color-dark--1);
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+  }
+
+  .view__log__btn {
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    background-color: #04293a;
+    border: 1px solid var(--color-light--2);
+    border-radius: 0.625rem;
+    color: var(--color-light--1);
+    font-weight: 600;
+    font-size: 1.5rem;
+  }
+
+  .nav__logo {
+    height: 3.5rem;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .sidebar--show {
+    display: block;
+  }
+
+  .nav__logo--hide {
+    display: none;
+  }
+
+  .workout {
+    margin: 2rem auto;
+    max-width: 100%;
+  }
+}
